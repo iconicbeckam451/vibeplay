@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VibePlay — temukan video, cerita, dan inspirasi baru setiap hari.">
+  <title>VibePlay — Temukan Vibe Kamu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+    <a class="brand" href="#" aria-label="VibePlay beranda">
+      <span class="brand-mark"><span></span><span></span><span></span></span>
+      <span>vibe<span class="brand-light">play</span></span>
+    </a>
+    <form class="search-wrap" id="searchForm">
+      <input id="searchInput" type="search" placeholder="Cari video, kreator, atau topik..." aria-label="Cari video">
+      <button type="submit" aria-label="Cari">⌕</button>
+    </form>
+
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <button class="nav-item active" data-nav="Beranda"><span class="nav-icon">⌂</span> Beranda</button>
+        <button class="nav-item" data-nav="Koleksi"><span class="nav-icon">▤</span> Koleksi</button>
+      </nav>
+      <div class="sidebar-line"></div>
+      <p class="side-label">RUANG KAMU</p>
+      <nav class="main-nav">
+        <button class="nav-item" data-nav="Riwayat"><span class="nav-icon">◷</span> Riwayat</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <p class="side-foot">Tentang · Panduan · Privasi<br>© 2026 VibePlay</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow"><span class="live-dot"></span> ARSIP LAMA</p>
+          <h1>Temukan <em>semua</em> file pribadimu.</h1>
+          <p class="welcome-sub">Semua tentang masa lalu kamu</p>
+        </div>
+        <div class="date-pill"><span>✦</span> Pilihan hari ini</div>
+      </section>
+
+      <section class="featured" id="featuredBanner" aria-label="Video pilihan">
+        <img id="featuredImage" src="media/images/nida14.jpg" alt="Banner VibePlay">
+        <div class="featured-shade"></div>
+        <div class="featured-content">
+          <span class="featured-label" id="featuredLabel">✦ PILIHAN EDITOR</span>
+          <h2 id="featuredTitle">Momen yang selalu berarti.</h2>
+          <p id="featuredSubtitle">Simpan cerita favoritmu dalam satu tempat.</p>
+          <button class="watch-btn" id="featuredPlay"><span>▶</span> Tonton pilihan</button>
+        </div>
+        <div class="featured-controls">
+          <div class="featured-index"><b id="featuredCurrent">01</b><span>/</span><span id="featuredTotal">03</span></div>
+          <button class="featured-arrow" id="featuredPrev" aria-label="Banner sebelumnya">‹</button>
+          <button class="featured-arrow next" id="featuredNext" aria-label="Banner berikutnya">›</button>
+        </div>
+      </section>
+
+      <section class="video-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">DISESUAIKAN UNTUKMU</p>
+            <h2>Jelajahi video</h2>
+          </div>
+          <button class="text-link" id="viewAllBtn">Lihat semua <span>↗</span></button>
+        </div>
+        <div class="folder-toolbar">
+          <div class="breadcrumbs" id="breadcrumbs"><span>Galeri Saya</span></div>
+          <button class="back-folder hidden" id="backFolder">← Kembali</button>
+        </div>
+        <div class="folder-grid" id="folderGrid"></div>
+        <div class="video-grid" id="videoGrid"></div>
+        <div class="empty-state hidden" id="emptyState">
+          <span>⌕</span>
+          <h3>Belum ada video yang cocok</h3>
+          <p>Coba kata kunci atau kategori lainnya.</p>
+          <button class="reset-btn" id="resetBtn">Reset pencarian</button>
+        </div>
+      </section>
+
+      <footer class="mobile-footer">VibePlay © 2026 · Dibuat untuk eksplorasi.</footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <div class="modal hidden" id="videoModal" role="dialog" aria-modal="true" aria-label="Pemutar video">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-panel">
+      <button class="modal-close" id="modalClose" aria-label="Tutup">×</button>
+      <div class="player-frame" id="playerFrame"></div>
+      <div class="modal-info">
+        <div>
+          <p class="eyebrow" id="modalCategory">VIBEPLAY ORIGINAL</p>
+          <h2 id="modalTitle">Video pilihan</h2>
+          <p id="modalDescription">Nikmati video pilihan di VibePlay.</p>
+        </div>
+        <button class="like-btn" id="modalLike">♡ <span>Sukai</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="uploadModal" role="dialog" aria-modal="true" aria-label="Buat video">
+    <div class="modal-backdrop" data-close-upload="true"></div>
+    <div class="upload-panel">
+      <button class="modal-close" id="uploadClose" aria-label="Tutup">×</button>
+      <div class="upload-symbol">＋</div>
+      <p class="eyebrow">RUANG KREATOR</p>
+      <h2>Bagikan ceritamu.</h2>
+      <p>Ini masih demo antarmuka. Fitur unggah sungguhan perlu backend dan penyimpanan video.</p>
+      <label for="demoTitle">Judul video (demo)</label>
+      <input id="demoTitle" placeholder="Contoh: Sehari jadi mahasiswa IT">
+      <button class="primary-btn" id="demoUpload">Lanjutkan <span>↗</span></button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
